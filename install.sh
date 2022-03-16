@@ -19,7 +19,7 @@
 
 # Install required pip packages
 pip install -U pip
-curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/requirements.txt > /tmp/requirements.txt
+curl https://raw.githubusercontent.com/odrodrig/DotFiles/master/requirements.txt > /tmp/requirements.txt
 pip install -r /tmp/requirements.txt
 rm /tmp/requirements.txt
 
@@ -73,7 +73,7 @@ if [[ -f "$HOME"/.vimrc ]]; then
     echo
     cp "$HOME"/.vimrc{,.backup}
 fi
-curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/vimrc > "$HOME"/.vimrc
+curl https://raw.githubusercontent.com/odrodrig/DotFiles/master/vimrc > "$HOME"/.vimrc
 
 # Check for ~/.zsh, and create if it doesn't
 if [[ ! -d "$HOME"/.zsh ]]; then
@@ -112,7 +112,7 @@ if [[ -f "$HOME"/.zshrc ]]; then
     echo
     cp "$HOME"/.zshrc{,.backup}
 fi
-curl https://raw.githubusercontent.com/mlangbehn/DotFiles/master/zshrc > "$HOME"/.zshrc
+curl https://raw.githubusercontent.com/odrodrig/DotFiles/master/zshrc > "$HOME"/.zshrc
 
 echo
 echo "Installation complete."

@@ -96,7 +96,6 @@ alias gb='git branch'
 alias gc='git commit -sS'
 alias gd='git diff'
 alias gl='git log --graph --abbrev-commit --pretty="format:%C(auto)%C(auto,red)%h%Creset - %s %C(auto,green)(%cr)%Creset %C(auto,blue)<%an>%Creset %C(auto,yellow)[PGP Signature: %G?]%Creset"'
-alias go='git checkout'
 alias gs='git status'
 
 # grep should always use color
@@ -351,7 +350,8 @@ GIT_PS1_DESCRIBE_STYLE="branch"
 GIT_PS1_SHOWCOLORHINTS=1
 
 # Display prompt, using NAME_COLOR, HOST_COLOR, and yellow for working directory
-PROMPT="%{$fg[white]%}%B[%{$fg[$NAME_COLOR]%}%n%{$fg[white]%}@%{$fg[$HOST_COLOR]%}%m %{$fg[$WORKING_DIRECTORY_COLOR]%}%~%{$fg[white]%}]%#%b "
+#PROMPT="%{$fg[white]%}%B[%{$fg[$NAME_COLOR]%}%n%{$fg[white]%}@%{$fg[$HOST_COLOR]%}%m %{$fg[$WORKING_DIRECTORY_COLOR]%}%~%{$fg[white]%}]%#%b "
+PROMPT="%{$fg[$WORKING_DIRECTORY_COLOR]%}%~%{$fg[white]%}]:"
 RPROMPT=$'$(__git_ps1 "%s")'
 
 
@@ -361,15 +361,15 @@ RPROMPT=$'$(__git_ps1 "%s")'
 #                                                                              #
 ################################################################################
 
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
+#if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+#    source /usr/local/bin/virtualenvwrapper.sh
+#fi
 
-function pip-update() {
-    for package in $(pip freeze | cut -d '=' -f1); do
-        pip install -U $package;
-    done
-}
+#function pip-update() {
+#    for package in $(pip freeze | cut -d '=' -f1); do
+#        pip install -U $package;
+#    done
+#}
 
 
 ################################################################################
@@ -388,14 +388,9 @@ SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r?$reset_color ($fg[blue]Y
 #                                                                              #
 ################################################################################
 
-if [ -f $(which fortune) ]; then
-    if [ -f $(which cowthink) ]; then
-        if [ -f $(which lolcat) ]; then
-            fortune | cowthink | lolcat
-        else
-            fortune | cowthink
-        fi
-    else
-        fortune
-    fi
-fi
+
+############ NVM #####################
+source $(brew --prefix nvm)/nvm.sh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/odo odo
